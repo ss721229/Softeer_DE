@@ -1,5 +1,6 @@
 .venv
 data/*
+log/*
 nohup.out
 .DS_Store
 sqlite.db
