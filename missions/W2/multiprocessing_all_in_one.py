@@ -11,8 +11,7 @@ def process_task(tasks_queue, done_queue, process_no):
     try:
         task_no = tasks_queue.get_nowait()
         time.sleep(0.5)
-        print(f'Task no {task_no} is done by Process-{process_no}')
-        done_queue.put(task_no)
+        done_queue.put(f'Task no {task_no} is done by Process-{process_no}')
     except:
         return
 
@@ -51,3 +50,6 @@ if __name__ == "__main__":
         
         if tasks_to_accomplish.empty():
             break
+    
+    while not tasks_that_are_done.empty():
+        print(tasks_that_are_done.get())
