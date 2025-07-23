@@ -28,7 +28,7 @@ docker-compose -f docker-compose.yaml up
 docker cp ./data.csv <Namenode Container ID>:/tmp/data.csv
 
 # 컨테이너에서 HDFS로 업로드
-docker exec -it <Namenode Container ID> hadoop fs -put /tmp/data.csv /user/root/upload/
+docker exec -it <Namenode Container ID> hadoop fs -put /tmp/data.csv /user/root/
 ```
 
 ### MapReduce 작업 수행
