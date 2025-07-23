@@ -1,0 +1,33 @@
+version: "3"
+services:
+  namenode:
+    image: w3m2
+    container_name: namenode
+    hostname: namenode
+    environment:
+      - ROLE=namenode
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+      - "8088:8088"
+    command: ["/usr/local/bin/start-cmd.sh"]
+  
+  datanode-1:
+    image: w3m2
+    container_name: datanode-1
+    hostname: datanode-1
+    environment:
+      - ROLE=datanode
+    ports:
+      - "9865:9864"
+    command: ["/usr/local/bin/start-cmd.sh"]
+
+  datanode-2:
+    image: w3m2
+    container_name: datanode-2
+    hostname: datanode-2
+    environment:
+      - ROLE=datanode
+    ports:
+      - "9864:9864"
+    command: ["/usr/local/bin/start-cmd.sh"]
