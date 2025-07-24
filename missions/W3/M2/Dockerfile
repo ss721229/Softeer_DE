@@ -41,12 +41,20 @@ RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
-# Hadoop 설정 파일 복사 (아래 config 폴더는 docker-compose에서 볼륨 연결로 대체해도 됨)
+# Hadoop 설정 파일 복사
 COPY config/*.xml $HADOOP_HOME/etc/hadoop/
+COPY modify-config/*.xml /modify-config/
 
 # Hadoop 시작용 진입점 스크립트 복사 (마스터/워커에 따라 달라짐)
 COPY start-cmd.sh /usr/local/bin/start-cmd.sh
 RUN chmod +x /usr/local/bin/start-cmd.sh
+
+COPY modify-config-data.sh /usr/local/bin/modify-config-data.sh
+COPY modify-config-name.sh /usr/local/bin/modify-config-name.sh
+COPY verify-config.sh /usr/local/bin/verify-config.sh
+RUN chmod +x /usr/local/bin/modify-config-data.sh
+RUN chmod +x /usr/local/bin/modify-config-name.sh
+RUN chmod +x /usr/local/bin/verify-config.sh
 
 RUN ln -s $JAVA_HOME/bin/java /bin/java
 

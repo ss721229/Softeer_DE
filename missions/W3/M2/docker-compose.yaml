@@ -1,7 +1,7 @@
 version: "3"
 services:
   namenode:
-    image: w3m2
+    image: w3m2b
     container_name: namenode
     hostname: namenode
     environment:
@@ -13,7 +13,7 @@ services:
     command: ["/usr/local/bin/start-cmd.sh"]
   
   datanode-1:
-    image: w3m2
+    image: w3m2b
     container_name: datanode-1
     hostname: datanode-1
     environment:
@@ -23,7 +23,7 @@ services:
     command: ["/usr/local/bin/start-cmd.sh"]
 
   datanode-2:
-    image: w3m2
+    image: w3m2b
     container_name: datanode-2
     hostname: datanode-2
     environment:
