@@ -5,7 +5,7 @@
 - ebook lint : https://www.gutenberg.org/ebooks/2701
 ``` shell
 # 로컬에서 컨테이너로 파일 복사
-docker cp "./Moby_Dick_Or_The_Whale_by_Herman_Melville.txt" namenode:/tmp/e-book.
+docker cp "./Moby_Dick_Or_The_Whale_by_Herman_Melville.txt" namenode:/tmp/e-book.txt
 
 # 컨테이너에서 HDFS로 업로드
 docker exec -it namenode hadoop fs -put /tmp/e-book.txt /user/root/
