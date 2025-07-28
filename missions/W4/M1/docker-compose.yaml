@@ -1,0 +1,39 @@
+version: "3"
+services:
+  namenode:
+    image: w4m1
+    container_name: master
+    hostname: master
+    environment:
+      - ROLE=master
+    ports:
+      - "8080:8080"
+      - "4040:4040"
+      - "7077:7077"
+    volumes:
+      - ./spark-data:/opt/spark-data
+    command: ["/usr/local/bin/start-cmd.sh"]
+  
+  worker1:
+    image: w4m1
+    container_name: worker1
+    hostname: worker1
+    environment:
+      - ROLE=worker
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./spark-data:/opt/spark-data
+    command: ["/usr/local/bin/start-cmd.sh"]
+
+  worker2:
+    image: w4m1
+    container_name: worker2
+    hostname: worker2
+    environment:
+      - ROLE=worker
+    ports:
+      - "8082:8081"
+    volumes:
+      - ./spark-data:/opt/spark-data
+    command: ["/usr/local/bin/start-cmd.sh"]
